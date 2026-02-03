@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TwoSets {
+public class Q008TwoSets {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
