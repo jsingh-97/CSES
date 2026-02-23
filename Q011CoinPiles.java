@@ -1,23 +1,29 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Q011CoinPiles {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
         while(t > 0){
-            int a = sc.nextInt();
-            int b = sc.nextInt();
+            String[] s = br.readLine().split(" ");
+            int a = Integer.parseInt(s[0]);
+            int b = Integer.parseInt(s[1]);
             if(valid(a, b)){
-                System.out.println("YES");
+                sb.append("YES").append("\n");
             }else{
-                System.out.println("NO");
+                sb.append("NO").append("\n");
             }
+            t--;
         }
+        System.out.println(sb);
     }
 
     private static boolean valid(long a, long b) {
         //assuming X and Y operations are performed to empty the array then
         // a = X + 2Y, b = 2X + Y
-        return (2*b - a > 0 && (2*b - a) % 3 == 0 && 2*a - b > 0 && (2*a - b) % 3 == 0);
+        return ((2*b - a) >= 0 && (2*b - a) % 3 == 0 && (2*a - b) >= 0 && (2*a - b) % 3 == 0);
     }
 }
