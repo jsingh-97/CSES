@@ -1,19 +1,26 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Q006NumberSpiral {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
         for(int i = 0; i < t; i++){
-            long y = sc.nextInt();
-            long x = sc.nextInt();
+            String[] parts = br.readLine().split(" ");
+            long r = Long.parseLong(parts[0]);
+            long c = Long.parseLong(parts[1]);
             long ans;
-            if(y > x){
-                ans = y % 2 == 1 ? (y - 1) * (y - 1) + x : (y - 1) * (y - 1) + 2 * y - x;
+            if(r > c){
+                long base = (r - 1) * (r - 1);
+                ans = r % 2 == 1 ? base + c : base + 2 * r - c;
             }else{
-                ans = x % 2 == 0 ? (x - 1) * (x - 1) + y : (x - 1) * (x - 1) + 2 * x - y;
+                long base = (c - 1) * (c - 1);
+                ans = c % 2 == 0 ? base + r : base + 2 * c - r;
             }
-            System.out.println(ans);
+            sb.append(ans +"\n");
         }
+        System.out.println(sb);
     }
 }
