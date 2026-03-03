@@ -30,11 +30,15 @@ public class Q020KnightMovesGrid {
             Arrays.fill(mat[i], -1);
         }
         solve(mat);
+        StringBuilder[] sbArr = new StringBuilder[n];
         for(int i = 0; i < n; i++){
+            sbArr[i] = new StringBuilder();
             for(int j = 0; j < n; j++){
-                System.out.print(mat[i][j] + " ");
+                sbArr[i].append(mat[i][j]).append(" ");
             }
-            System.out.println();
+        }
+        for(StringBuilder sb: sbArr){
+            System.out.println(sb);
         }
     }
 }
