@@ -1,5 +1,3 @@
-package IntroductoryProblems;
-
 import java.util.Scanner;
 
 public class Q021GridColoringI {

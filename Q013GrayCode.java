@@ -1,5 +1,3 @@
-package IntroductoryProblems;
-
 import java.util.*;
 
 public class Q013GrayCode {
