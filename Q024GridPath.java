@@ -51,26 +51,6 @@ public class Q024GridPath {
         }
     }
 
-    private static int getPtr(char c) {
-        switch (c) {
-            case 'D': {
-                return 0;
-            }
-            case 'U' : {
-                return 1;
-            }
-            case 'L' : {
-                return 2;
-            }
-            case 'R' : {
-                return 3;
-            }
-            default : {
-                return  -1;
-            }
-        }
-    }
-
     public static void main(String [] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String s = bufferedReader.readLine();
