@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Q026Apartments {
+public class Q027FerrisWheel {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -28,30 +28,20 @@ public class Q026Apartments {
     public static void main(String[] args){
         FastReader fr = new FastReader();
         int n = fr.nextInt();
-        int m = fr.nextInt();
-        int k = fr.nextInt();
-        int[] applicants = new int[n];
+        int maxWeight = fr.nextInt();
+        int[] arr = new int[n];
         for(int i = 0; i < n; i++){
-            applicants[i] = fr.nextInt();
+            arr[i] = fr.nextInt();
         }
-        int[] apartments = new int[m];
-        for(int i = 0 ; i < m; i++){
-            apartments[i] = fr.nextInt();
-        }
+        Arrays.sort(arr);
+        int s = 0, e = arr.length - 1;
         int ans = 0;
-        Arrays.sort(applicants);
-        Arrays.sort(apartments);
-        int i = 0, j = 0;
-        while(i < n && j < m){
-            if(Math.abs(applicants[i] - apartments[j]) <= k){
-                ans++;
-                i++;
-                j++;
-            }else if(applicants[i] > apartments[j]){
-                j++;
-            }else{
-                i++;
+        while(s <= e){
+            if(arr[e] + arr[s] <= maxWeight){
+                s++;
             }
+            e--;
+            ans++;
         }
         System.out.println(ans);
     }
