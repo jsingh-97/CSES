@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class JosephusProblemI {
+public class Q042JosephusProblemI {
 
     public static void main(String[] args) throws IOException{
         Scanner sc = new Scanner(System.in);
