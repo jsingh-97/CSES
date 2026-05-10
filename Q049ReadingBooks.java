@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 
 public class Q049ReadingBooks {
     static class FastReader {
@@ -39,20 +38,26 @@ public class Q049ReadingBooks {
     public static void main(String[] args) throws IOException {
         FastReader fr = new FastReader();
         int n = fr.nextInt();
-        long sum1 = 0, sum2 = 0;
         int[] arr = new int[n];
        for(int i = 0; i < n; i++){
            arr[i] = fr.nextInt();
        }
-       Arrays.sort(arr);
-       for(int i = arr.length - 1; i >= 0; i--){
-           if(sum1 <= sum2){
-               sum1 += arr[i];
-           }else{
-               sum2 += arr[i];
+       long largestReadTime = arr[0];
+       int largestReadTimeIdx = 0;
+       long sum = arr[0];
+       for(int i = 1; i < n; i++){
+           if(largestReadTime < arr[i]){
+               largestReadTime = arr[i];
+               largestReadTimeIdx = i;
            }
+           sum += arr[i];
        }
-        System.out.println(Math.max(sum1, sum2) * 2);
+       long sumExceptLargest = sum - largestReadTime;
+       if(largestReadTime >= sumExceptLargest){
+           System.out.println(2 * largestReadTime);
+       }else{
+           System.out.println(largestReadTime + sumExceptLargest);
+       }
     }
 
 }
