@@ -43,12 +43,10 @@ public class Q049ReadingBooks {
            arr[i] = fr.nextInt();
        }
        long largestReadTime = arr[0];
-       int largestReadTimeIdx = 0;
        long sum = arr[0];
        for(int i = 1; i < n; i++){
            if(largestReadTime < arr[i]){
                largestReadTime = arr[i];
-               largestReadTimeIdx = i;
            }
            sum += arr[i];
        }
