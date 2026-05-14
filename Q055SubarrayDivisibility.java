@@ -3,7 +3,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Q054SubarraySumII {
+public class Q055SubarrayDivisibility {
     static class FastReader {
         private final InputStream in = System.in;
         private final byte[] buffer = new byte[1 << 16];
@@ -40,19 +40,18 @@ public class Q054SubarraySumII {
     public static void main(String[] args) throws IOException{
         FastReader fr = new FastReader();
         int n = fr.nextInt();
-        int x = fr.nextInt();
         int[] arr = new int[n];
         for(int i = 0; i < n; i++){
             arr[i] = fr.nextInt();
         }
-        Map<Long, Integer> map = new HashMap<>();
-        map.put(0L, 1);
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
         long cursum = 0, ans = 0;
         for(int i = 0; i < n; i++){
             cursum += arr[i];
-            long target = cursum - x;
-            ans += map.getOrDefault(target, 0);
-            map.put(cursum, map.getOrDefault(cursum, 0) + 1);
+            int rem = ((int)(cursum % n) + n ) % n ;
+            ans += map.getOrDefault(rem, 0);
+            map.put(rem, map.getOrDefault(rem, 0) + 1);
         }
         System.out.print(ans);
     }
